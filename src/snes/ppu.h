@@ -11,7 +11,7 @@ typedef struct Ppu Ppu;
 
 #include "snes.h"
 
-typedef struct BgLayer {
+typedef struct __attribute__((aligned(8))) BgLayer {
   uint16_t hScroll;
   uint16_t vScroll;
   bool tilemapWider;
@@ -29,7 +29,7 @@ enum {
 
 typedef uint16_t PpuZbufType;
 
-typedef struct PpuPixelPrioBufs {
+typedef struct __attribute__((aligned(8))) PpuPixelPrioBufs {
   // This holds the prio in the upper 8 bits and the color in the lower 8 bits.
   PpuZbufType data[kPpuXPixels];
 } PpuPixelPrioBufs;
@@ -46,14 +46,14 @@ enum {
 
 
 
-typedef struct Layer {
+typedef struct __attribute__((aligned(8))) Layer {
   bool mainScreenEnabled;
   bool subScreenEnabled;
   bool mainScreenWindowed;
   bool subScreenWindowed;
 } Layer;
 
-typedef struct WindowLayer {
+typedef struct __attribute__((aligned(8))) WindowLayer {
   bool window1enabled;
   bool window2enabled;
   bool window1inversed;
@@ -61,7 +61,7 @@ typedef struct WindowLayer {
   uint8_t maskLogic;
 } WindowLayer;
 
-struct Ppu {
+struct __attribute__((aligned(8))) Ppu {
   Snes* snes;
   // vram access
   uint16_t vram[0x8000];
