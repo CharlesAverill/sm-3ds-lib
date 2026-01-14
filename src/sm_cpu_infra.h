@@ -23,4 +23,6 @@ void ClearUnusedOam();
 
 void RunOneFrameOfGame_Both();
 
+void SwapEmulatedNative(void);
+
 #endif  // SM_CPU_INFRA_H_  

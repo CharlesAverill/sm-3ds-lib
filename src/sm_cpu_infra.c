@@ -14,7 +14,17 @@
 void RtlRunFrameCompare(uint16 input, int run_what);
 
 enum RunMode { RM_BOTH, RM_MINE, RM_THEIRS };
-uint8 g_runmode = RM_MINE;
+uint8 g_runmode =
+#ifdef FULL_NATIVE
+  RM_MINE
+#else
+  RM_THEIRS
+#endif
+  ;
+
+void SwapEmulatedNative(void) {
+  g_runmode = g_runmode == RM_THEIRS ? RM_MINE : RM_THEIRS;
+}
 
 extern int g_got_mismatch_count;
 
@@ -1038,7 +1048,6 @@ void RtlRunFrameCompare(uint16 input, int run_what) {
 
   } else if (g_runmode == RM_MINE) {
     g_use_my_apu_code = true;
-
     // g_snes->runningWhichVersion = 0xff;
     RunOneFrameOfGame();
     DrawFrameToPpu();
