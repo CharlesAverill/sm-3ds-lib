@@ -30,7 +30,7 @@ Snes* snes_init(uint8_t *ram) {
   snes->ram = ram;
   snes->debug_cycles = false;
   snes->debug_apu_cycles = false;
-  snes->runningWhichVersion = 0;
+  snes->runningWhichVersion = 0xff;
 
   snes->cpu = cpu_init(snes, 0);
   snes->apu = apu_init();

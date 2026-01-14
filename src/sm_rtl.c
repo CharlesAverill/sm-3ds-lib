@@ -27,8 +27,8 @@ void RtlSetupEmuCallbacks(uint8 *emu_ram, RunFrameFunc *func, SyncAllFunc *sync_
 }
 
 static void RtlSynchronizeWholeState(void) {
-  if (g_rtl_syncall)
-    g_rtl_syncall();
+  // if (g_rtl_syncall)
+  //   g_rtl_syncall();
 }
 
 // |ptr| must be a pointer into g_ram, will synchronize the RAM memory with the

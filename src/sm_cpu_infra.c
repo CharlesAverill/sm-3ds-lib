@@ -1039,10 +1039,10 @@ void RtlRunFrameCompare(uint16 input, int run_what) {
   } else if (g_runmode == RM_MINE) {
     g_use_my_apu_code = true;
 
-    g_snes->runningWhichVersion = 0xff;
+    // g_snes->runningWhichVersion = 0xff;
     RunOneFrameOfGame();
     DrawFrameToPpu();
-    g_snes->runningWhichVersion = 0;
+    // g_snes->runningWhichVersion = 0;
   } else {
     g_use_my_apu_code = true;
     RunOneFrameOfGame_Both();
